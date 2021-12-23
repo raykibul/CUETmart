@@ -16,6 +16,7 @@ import android.R
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.util.Log
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 
@@ -60,6 +61,8 @@ class LoginFragment : Fragment() {
 
 
         binding.loginbutton.setOnClickListener {
+            googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
+
             val signInIntent = googleSignInClient.signInIntent
             startActivityForResult(signInIntent, RC_SIGN_IN)
 
@@ -103,7 +106,17 @@ class LoginFragment : Fragment() {
                 // Google Sign In was successful, authenticate with Firebase
                 val account = task.getResult(ApiException::class.java)!!
                 Log.d(TAG, "firebaseAuthWithGoogle:" + account.id)
-                firebaseAuthWithGoogle(account.idToken!!)
+                val email= account.email?.split("@")?.get(1)
+
+                if(email?.contains("cuet.ac.bd")==true){
+                    firebaseAuthWithGoogle(account.idToken!!)
+                    }
+                else{
+                    googleSignInClient.signOut()
+                    Toast.makeText(activity, "দয়া করে চুয়েটের ইমেইল দিয়ে চেষ্টা করুন। ধন্যবাদ",Toast.LENGTH_SHORT).show()
+
+                }
+
             } catch (e: ApiException) {
                 // Google Sign In failed, update UI appropriately
                 Log.w(TAG, "Google sign in failed", e)
