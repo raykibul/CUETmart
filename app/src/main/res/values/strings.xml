@@ -14,11 +14,12 @@
     <string name="title_home">Home</string>
     <string name="title_category">Categories</string>
     <string name="title_profile">Profile</string>
+    <string name="webid">myname is rakib</string>
 
 
 
     //login page
 
     <string name="loginisntruction">CUETmart ব্যবহার করার জন্য অবশ্যই আপনার চুয়েটের ইমেইল দিয়ে সাইন-আপ করতে হবে। </string>
-    <string name="loginbuttontext">সাইন-আপ করুন </string>
+    <string name="loginbuttontext">Sign-in Now </string>
 </resources>

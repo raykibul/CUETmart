@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.login.LoginFragment"
 
+
     >
 
     <ImageView
@@ -28,20 +29,36 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="@string/loginbuttontext"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/skipfornowButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/skipfornowButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
+        android:text="Skip for now"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.61" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:textColor="@color/primary"
         android:padding="16dp"
+        android:textSize="16sp"
         android:text="@string/loginisntruction"
         app:layout_constraintEnd_toEndOf="@+id/loginbutton"
         app:layout_constraintStart_toStartOf="@+id/loginbutton"
         app:layout_constraintTop_toBottomOf="@+id/imageFilterView" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
