@@ -22,4 +22,6 @@
 
     <string name="loginisntruction">CUETmart ব্যবহার করার জন্য অবশ্যই আপনার চুয়েটের ইমেইল দিয়ে সাইন-আপ করতে হবে। </string>
     <string name="loginbuttontext">Sign-in Now </string>
+    <string name="title_sell">Sell Products</string>
+    <string name="title_cart">Cart</string>
 </resources>

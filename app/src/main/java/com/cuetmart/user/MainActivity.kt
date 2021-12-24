@@ -2,7 +2,9 @@ package com.cuetmart.user
 
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -15,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.cuetmart.user.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationBarView
 
 
 class MainActivity : AppCompatActivity() {
@@ -39,11 +42,42 @@ class MainActivity : AppCompatActivity() {
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,R.id.loginFragment
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,R.id.loginFragment,R.id.profileFragment
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+            Toast.makeText(this,item.itemId,Toast.LENGTH_SHORT).show()
+            when (item.itemId) {
+
+
+                R.id.navigation_profile -> {
+
+
+                    navController.navigateUp()
+                    navController.navigate(R.id.profileFragment)
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.navigation_home->{
+
+                    navController.navigateUp()
+                    navController.navigate(R.id.nav_home)
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.navigation_category->{
+                    navController.navigateUp()
+                    navController.navigate(R.id.navigation_category)
+                    return@OnNavigationItemSelectedListener true
+                }
+
+            }
+            false
+        }
+
+        botomnavView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
 
 
         navController.addOnDestinationChangedListener { _, destination, _ ->

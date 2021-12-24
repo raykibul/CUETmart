@@ -12,6 +12,14 @@
         android:title="@string/title_category" />
 
     <item
+        android:id="@+id/navigation_sell"
+        android:icon="@drawable/ic_sell"
+        android:title="@string/title_sell" />
+    <item
+        android:id="@+id/navigation_cart"
+        android:icon="@drawable/ic_card"
+        android:title="@string/title_cart" />
+    <item
         android:id="@+id/navigation_profile"
         android:icon="@drawable/ic_profile_24"
         android:title="@string/title_profile" />
