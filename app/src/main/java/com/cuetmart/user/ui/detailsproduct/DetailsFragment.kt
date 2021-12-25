@@ -1,10 +1,13 @@
 package com.cuetmart.user.ui.detailsproduct
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -12,6 +15,7 @@ import com.bumptech.glide.Glide
 import com.cuetmart.user.R
 import com.cuetmart.user.data.model.Controller
 import com.cuetmart.user.databinding.FragmentDetailsBinding
+import com.google.gson.Gson
 
 
 class DetailsFragment : Fragment() {
@@ -42,6 +46,17 @@ class DetailsFragment : Fragment() {
         binding.productDetails.text = "${product?.description}\nStock Available: ${product?.quantity} \n\n\n Seller Details: \n\nName: ${product?.seller?.name}\nEmail: ${product?.seller?.email}"
         binding.productNameText.text= product?.name+"- ${product?.type}"
 
+        binding.button.setOnClickListener {
+            val mPrefs = requireActivity().getPreferences(Context.MODE_PRIVATE)
+            val gson = Gson()
+            val json: String = gson.toJson(product)
+            val prefsEditor = mPrefs.edit()
+            val size = mPrefs.getInt("cartlistsize", 0)
+            prefsEditor.putString("cartlistobject$size", json)
+            prefsEditor.putInt("cartlistsize", size + 1)
+            prefsEditor.apply()
+            Toast.makeText(activity, "Product added to your cart!", Toast.LENGTH_SHORT).show()
+        }
         return root
     }
 

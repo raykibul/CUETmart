@@ -71,6 +71,11 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.sellFragment)
                     return@OnNavigationItemSelectedListener true
                 }
+                R.id.navigation_cart->{
+                    navController.navigateUp()
+                    navController.navigate(R.id.CartFragment)
+                    return@OnNavigationItemSelectedListener true
+                }
 
             }
             false

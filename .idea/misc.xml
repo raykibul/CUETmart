@@ -7,12 +7,15 @@
         <entry key="..\:/CUETmart/app/src/main/res/layout/activity_splash_screen.xml" value="0.19114583333333332" />
         <entry key="..\:/CUETmart/app/src/main/res/layout/app_bar_main.xml" value="0.1" />
         <entry key="..\:/CUETmart/app/src/main/res/layout/content_main.xml" value="0.25" />
+        <entry key="..\:/CUETmart/app/src/main/res/layout/fragment_cart.xml" value="0.303125" />
         <entry key="..\:/CUETmart/app/src/main/res/layout/fragment_details.xml" value="0.27395833333333336" />
         <entry key="..\:/CUETmart/app/src/main/res/layout/fragment_home.xml" value="0.20677083333333332" />
         <entry key="..\:/CUETmart/app/src/main/res/layout/fragment_login.xml" value="0.18" />
+        <entry key="..\:/CUETmart/app/src/main/res/layout/fragment_order.xml" value="0.1359375" />
         <entry key="..\:/CUETmart/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
         <entry key="..\:/CUETmart/app/src/main/res/layout/fragment_sell.xml" value="0.25" />
         <entry key="..\:/CUETmart/app/src/main/res/layout/fragment_slideshow.xml" value="0.35625" />
+        <entry key="..\:/CUETmart/app/src/main/res/layout/order_nowdialog.xml" value="0.1359375" />
         <entry key="..\:/CUETmart/app/src/main/res/layout/product_item.xml" value="0.33" />
         <entry key="..\:/CUETmart/app/src/main/res/menu/activity_main_drawer.xml" value="0.371875" />
         <entry key="..\:/CUETmart/app/src/main/res/menu/bottom_nav_menu.xml" value="0.371875" />
