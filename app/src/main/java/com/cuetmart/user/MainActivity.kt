@@ -66,9 +66,9 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.nav_home)
                     return@OnNavigationItemSelectedListener true
                 }
-                R.id.navigation_category->{
+                R.id.navigation_sell->{
                     navController.navigateUp()
-                    navController.navigate(R.id.navigation_category)
+                    navController.navigate(R.id.sellFragment)
                     return@OnNavigationItemSelectedListener true
                 }
 

@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_nav_home_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_sellFragment"
+            app:destination="@id/sellFragment" />
     </fragment>
 
     <fragment
@@ -52,5 +55,20 @@
         <action
             android:id="@+id/action_profileFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_sellFragment"
+            app:destination="@id/sellFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sellFragment"
+        android:name="com.cuetmart.user.ui.sell.SellFragment"
+        android:label="SellFragment"
+        tools:layout="@layout/fragment_sell">
+        <action
+            android:id="@+id/action_sellFragment_to_nav_home"
+            app:destination="@id/nav_home" />
+        <action
+            android:id="@+id/action_sellFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
 </navigation>
