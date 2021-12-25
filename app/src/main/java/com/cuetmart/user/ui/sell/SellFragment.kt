@@ -66,20 +66,20 @@ class SellFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
         })
 
 
-
+//check weather the item for sale is new or used using radio Button option
 
         binding.newRadioButton.setOnCheckedChangeListener(this)
         binding.usedRadiobutton.setOnCheckedChangeListener(this)
 
 
-
+//crop the image that was added for sale
         binding.productImageVIew.setOnClickListener {
 
             CropImage.activity()
                 .start(requireContext(),this);
         }
 
-
+//chcek weather all the reqired informationa was fille in order to submit the product for sale
         binding.uploadProductButton.setOnClickListener {
           if (binding.productName.text.toString()==""||binding.productQuantity.text.toString()==""||binding.description.text.toString()==""
               ||binding.productPrice.text.toString()==""){
