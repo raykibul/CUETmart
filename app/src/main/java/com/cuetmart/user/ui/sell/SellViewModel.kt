@@ -15,7 +15,8 @@ import java.io.File
 class SellViewModel : ViewModel() {
       val storage = Firebase.storage("gs://cuet-mart.appspot.com")
       var response= MutableLiveData<Response>()
-      val storageRef = storage.reference.child("products")
+
+      var storageRef = storage.getReference().child("products");
       val db = Firebase.firestore
 
       fun setresponsefalse(){
@@ -23,7 +24,8 @@ class SellViewModel : ViewModel() {
       }
 
       fun uploadImagethenAddProduct(  product: Product, imagefile:File){
-            var uploadTask= storageRef.putFile(Uri.fromFile(imagefile))
+            var  finalref = storageRef.child(getRandomString(16))
+            var uploadTask= finalref.putFile(Uri.fromFile(imagefile))
             val urlTask = uploadTask.continueWithTask { task ->
                   if (!task.isSuccessful) {
                         task.exception?.let {
@@ -31,7 +33,7 @@ class SellViewModel : ViewModel() {
                               throw it
                         }
                   }
-                  storageRef.downloadUrl
+                  finalref.downloadUrl
 
             }.addOnCompleteListener { task ->
                   if (task.isSuccessful) {
@@ -56,6 +58,14 @@ class SellViewModel : ViewModel() {
 
                   }
 
+      }
+
+
+      fun getRandomString(length: Int) : String {
+            val allowedChars = ('A'..'Z') + ('a'..'z') + ('0'..'9')
+            return (1..length)
+                  .map { allowedChars.random() }
+                  .joinToString("")
       }
 
 }

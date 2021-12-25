@@ -31,3 +31,9 @@
 -keep class com.bumptech.glide.load.data.ParcelFileDescriptorRewinder$InternalRewinder {
   *** rewind();
 }
+
+-keepclassmembers class com.cuetmart.user.data.model.** {
+ *;
+  }
+
+  -keep class androidx.appcompat.widget.** { *; }

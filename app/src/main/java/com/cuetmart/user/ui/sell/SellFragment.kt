@@ -26,6 +26,7 @@ import com.canhub.cropper.CropImage.getActivityResult
 import com.cuetmart.user.R
 import com.cuetmart.user.data.model.CuetMartUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.ktx.Firebase
 
 
@@ -48,6 +49,10 @@ class SellFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
         sellViewModel = ViewModelProvider(this).get(SellViewModel::class.java)
         _binding = FragmentSellBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+
+
+
         sellViewModel.response.observe(viewLifecycleOwner, Observer {
             if(it!=null&&it.isAvaileable){
                 binding.progressbar.visibility=View.GONE
@@ -59,8 +64,15 @@ class SellFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
                 sellViewModel.setresponsefalse()
             }
         })
+
+
+
+
         binding.newRadioButton.setOnCheckedChangeListener(this)
         binding.usedRadiobutton.setOnCheckedChangeListener(this)
+
+
+
         binding.productImageVIew.setOnClickListener {
 
             CropImage.activity()
@@ -79,7 +91,7 @@ class SellFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
               Toast.makeText(requireActivity(),"Uploading your product ...",Toast.LENGTH_SHORT).show()
               var cuetmartuser:CuetMartUser= CuetMartUser(currentUser?.displayName,currentUser?.email!!,currentUser?.photoUrl.toString(),currentUser?.uid)
               var product = Product(binding.productName.text.toString(),binding.description.text.toString(),
-                            type,binding.productQuantity.text.toString().toInt(),cuetmartuser,null,null,binding.productPrice.text.toString().toInt())
+                            type,binding.productQuantity.text.toString().toInt(),cuetmartuser,null,date = null,binding.productPrice.text.toString().toInt())
               sellViewModel.uploadImagethenAddProduct(product,imageFile!!)
           }
         }

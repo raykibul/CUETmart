@@ -9,6 +9,8 @@ import android.view.WindowManager
 
 
 class SplashScreen : AppCompatActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -16,6 +18,8 @@ class SplashScreen : AppCompatActivity() {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash_screen)
+
+
         var handler = Handler()
         handler.postDelayed(kotlinx.coroutines.Runnable {
             startActivity(Intent(this, MainActivity::class.java))
