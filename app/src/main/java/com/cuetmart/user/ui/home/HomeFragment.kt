@@ -9,9 +9,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.cuetmart.user.R
 import com.cuetmart.user.data.`interface`.ProductInterface
+import com.cuetmart.user.data.model.Controller
 import com.cuetmart.user.data.model.Product
 import com.cuetmart.user.databinding.FragmentHomeBinding
 
@@ -61,6 +63,8 @@ class HomeFragment : Fragment(),ProductInterface {
     }
 
     override fun onProductClick(product: Product) {
-         Toast.makeText(requireActivity(),"clicked",Toast.LENGTH_SHORT).show()
+        Controller.currentProduct=product
+        var action = HomeFragmentDirections.actionNavHomeToDetailsFragment()
+        findNavController().navigate(action)
     }
 }
