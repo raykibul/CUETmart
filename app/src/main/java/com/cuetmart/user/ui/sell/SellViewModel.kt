@@ -13,7 +13,10 @@ import com.google.firebase.storage.ktx.storage
 import java.io.File
 
 class SellViewModel : ViewModel() {
+      
+      //added product will bw  stored in firebase
       val storage = Firebase.storage("gs://cuet-mart.appspot.com")
+      //mutable live data can be modiefied easily
       var response= MutableLiveData<Response>()
 
       var storageRef = storage.getReference().child("products");
@@ -22,7 +25,7 @@ class SellViewModel : ViewModel() {
       fun setresponsefalse(){
             response.postValue(Response("sd",false,null,false))
       }
-
+//if upload task is successfull then put the url else throw exception message
       fun uploadImagethenAddProduct(  product: Product, imagefile:File){
             var  finalref = storageRef.child(getRandomString(16))
             var uploadTask= finalref.putFile(Uri.fromFile(imagefile))
@@ -34,7 +37,7 @@ class SellViewModel : ViewModel() {
                         }
                   }
                   finalref.downloadUrl
-
+//if all reqirement is fullfilled then put the url in the database.
             }.addOnCompleteListener { task ->
                   if (task.isSuccessful) {
                         val downloadUri = task.result
@@ -45,7 +48,7 @@ class SellViewModel : ViewModel() {
                   }
             }
       }
-
+//show success message to the user and for failure case show failure message
       fun addProduct(product :Product){
 
             db.collection("products")
