@@ -1,6 +1,8 @@
 package com.cuetmart.user.ui.cart;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -96,6 +98,17 @@ public class CartFragment extends Fragment implements CartInterface {
         }
      Bundle mybundle=new Bundle();
      mybundle.putSerializable("productlist", (Serializable) productsArrayList);
+        new AlertDialog.Builder(getActivity()).setTitle("Order Confirm!")
+                .setMessage("Your order is confirmed! Thank you for using CUETmart. ")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .show();
+        removeCartProducts();
+        adapter.notifyDataSetChanged();
 
  }
 
@@ -122,5 +135,15 @@ public class CartFragment extends Fragment implements CartInterface {
         productsArrayList.remove(products);
         adapter.notifyDataSetChanged();
         Toast.makeText(getActivity(),"Product Removed!",Toast.LENGTH_SHORT).show();
+    }
+
+
+    private void removeCartProducts() {
+        SharedPreferences mPrefs = getActivity().getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor prefsEditor = mPrefs.edit();
+        prefsEditor.clear();
+        prefsEditor.apply();
+
+
     }
 }

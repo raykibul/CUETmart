@@ -1,7 +1,9 @@
 package com.cuetmart.user.ui.cart;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -65,6 +67,20 @@ public class OrderFragment extends Fragment {
         name = view.findViewById(R.id.order_name);
         phone = view.findViewById(R.id.orderphoneNumber);
         address = view.findViewById(R.id.orderdeliveryaddress);
+        confirmOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(getActivity()).setTitle("Order Confirm!")
+                        .setMessage("Your order is confirmed! Thank you for using CUETmart. ")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        })
+                        .show();
+            }
+        });
 
      /*   confirmOrder.setOnClickListener(new View.OnClickListener() {
             @Override
